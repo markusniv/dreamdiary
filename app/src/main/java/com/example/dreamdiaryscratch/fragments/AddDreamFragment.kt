@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
 import android.widget.TextView
 import com.example.dreamdiaryscratch.R
 
@@ -41,8 +42,8 @@ class AddDreamFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val fragTextView : TextView = requireView().findViewById(R.id.diary)
-        fragTextView.text = "This is the AddDreamFragment"
+
+
     }
 
     companion object {

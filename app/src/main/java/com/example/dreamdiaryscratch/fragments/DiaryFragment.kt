@@ -5,8 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.TextView
+import com.example.dreamdiaryscratch.DreamDiary
 import com.example.dreamdiaryscratch.R
+import com.example.dreamdiaryscratch.dataclasses.Addition
+import com.example.dreamdiaryscratch.dataclasses.AdditionSingleton
+import com.example.dreamdiaryscratch.dataclasses.Dream
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +29,8 @@ class DiaryFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private lateinit var listView: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +50,17 @@ class DiaryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val fragTextView : TextView = requireView().findViewById(R.id.diary)
-        fragTextView.text = "This is the DiaryFragment"
+        listView = requireView().findViewById(R.id.dreamlist)
+        AdditionSingleton.additionList.add(Addition(Dream()))
+        val dreamList = AdditionSingleton.additionList
+        val parsedList = arrayOfNulls<String>(dreamList.size)
+        for (i in 0 until dreamList.size) {
+            val dream = dreamList[i].dream
+            parsedList[i] = dream.content
+        }
+        val adapter = ArrayAdapter(DreamDiary.ctx!!, android.R.layout.simple_list_item_1, parsedList)
+        listView.adapter = adapter
+
     }
 
     companion object {
