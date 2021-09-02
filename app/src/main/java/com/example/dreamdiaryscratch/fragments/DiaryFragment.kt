@@ -14,6 +14,7 @@ import com.example.dreamdiaryscratch.RecyclerViewAdapter
 import com.example.dreamdiaryscratch.dataclasses.Addition
 import com.example.dreamdiaryscratch.dataclasses.AdditionSingleton
 import com.example.dreamdiaryscratch.dataclasses.Dream
+import com.example.dreamdiaryscratch.dataclasses.DreamType
 import kotlin.random.Random
 
 // TODO: Rename parameter arguments, choose names that match
@@ -86,7 +87,12 @@ class DiaryFragment : Fragment() {
                 2 -> R.drawable.ic_mood_happy
                 else -> R.drawable.ic_mood_veryhappy
             }
-            val dream = Dream()
+            val dreamType = when (j) {
+                1 -> DreamType.NIGHTMARE
+                2 -> DreamType.LUCID_DREAM
+                else -> DreamType.REGULAR
+            }
+            val dream = Dream(dreamType,"dream_name$i")
             val addition = Addition(dream, icon)
             AdditionSingleton.additionList.add(addition)
         }
