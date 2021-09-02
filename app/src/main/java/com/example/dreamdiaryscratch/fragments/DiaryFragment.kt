@@ -5,15 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.dreamdiaryscratch.DreamDiary
 import com.example.dreamdiaryscratch.R
+import com.example.dreamdiaryscratch.RecyclerViewAdapter
 import com.example.dreamdiaryscratch.dataclasses.Addition
 import com.example.dreamdiaryscratch.dataclasses.AdditionSingleton
 import com.example.dreamdiaryscratch.dataclasses.Dream
+import kotlin.random.Random
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,14 +31,13 @@ class DiaryFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var listView: ListView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
@@ -50,16 +50,11 @@ class DiaryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        listView = requireView().findViewById(R.id.dreamlist)
-        AdditionSingleton.additionList.add(Addition(Dream()))
-        val dreamList = AdditionSingleton.additionList
-        val parsedList = arrayOfNulls<String>(dreamList.size)
-        for (i in 0 until dreamList.size) {
-            val dream = dreamList[i].dream
-            parsedList[i] = dream.content
-        }
-        val adapter = ArrayAdapter(DreamDiary.ctx!!, android.R.layout.simple_list_item_1, parsedList)
-        listView.adapter = adapter
+        createDummyEntries(50)
+
+        val recyclerView : RecyclerView = requireView().findViewById(R.id.rv_diary)
+        recyclerView.adapter = RecyclerViewAdapter(AdditionSingleton.additionList)
+        recyclerView.layoutManager = LinearLayoutManager(DreamDiary.ctx)
 
     }
 
@@ -81,5 +76,19 @@ class DiaryFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun createDummyEntries(size : Int) {
+        for (i in 0..size) {
+            val j = (1..3).random()
+            val icon = when (j) {
+                1 -> R.drawable.ic_mood_sad
+                2 -> R.drawable.ic_mood_happy
+                else -> R.drawable.ic_mood_veryhappy
+            }
+            val dream = Dream()
+            val addition = Addition(dream, icon)
+            AdditionSingleton.additionList.add(addition)
+        }
     }
 }
