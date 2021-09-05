@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dreamdiaryscratch.dataclasses.Addition
+import com.example.dreamdiaryscratch.dataclasses.Entry
 
-class RecyclerViewAdapter(private val dreamList: List<Addition>) : RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>() {
+class RecyclerViewAdapter(private val dreamList: List<Entry>) : RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
@@ -22,7 +22,7 @@ class RecyclerViewAdapter(private val dreamList: List<Addition>) : RecyclerView.
         val currentItem = dreamList[position]
 
         holder.dreamIcon.setImageResource(currentItem.imageResource)
-        holder.dreamName.text = currentItem.dream.title
+        holder.dreamName.text = currentItem.dreamTitle
         holder.dreamType.text = currentItem.dreamTypeToString
     }
 
