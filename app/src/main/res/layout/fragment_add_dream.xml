@@ -8,25 +8,102 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:id="@+id/diary_add_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="100dp">
+
+        <TextView
+            android:id="@+id/diary_add_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="@string/add_dream_name"
+            android:textStyle="bold"
+            android:textColor="@color/dark_night_Blue"
+            android:textSize="18sp"/>
+        <EditText
+            android:id="@+id/diary_add_title_edit"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/diary_add_title"
+            android:textColor="@color/night_blue"/>
+        <TextView
+            android:id="@+id/diary_add_mood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/diary_add_title"
+            android:paddingTop="50dp"
+            android:text="@string/add_dream_mood"
+            android:textStyle="bold"
+            android:textColor="@color/dark_night_Blue"
+            android:textSize="18sp"/>
+        <RadioGroup
+            android:id="@+id/diary_add_radiogroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/diary_add_mood"
+            android:layout_below="@id/diary_add_title"
+            android:orientation="horizontal"
+            android:paddingTop="30dp"
+            android:paddingLeft="20dp">
+
+            <RadioButton
+                android:id="@+id/diary_add_mood_veryhappy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:background="@drawable/ic_mood_veryhappy"/>
+            <RadioButton
+                android:id="@+id/diary_add_mood_happy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:background="@drawable/ic_mood_happy"/>
+            <RadioButton
+                android:id="@+id/diary_add_mood_sad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:background="@drawable/ic_mood_sad"/>
+        </RadioGroup>
+        <TextView
+            android:id="@+id/diary_add_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/diary_add_mood"
+            android:paddingTop="50dp"
+            android:text="@string/add_dream_content"
+            android:textStyle="bold"
+            android:textColor="@color/dark_night_Blue"
+            android:textSize="18sp"/>
+
+        <com.example.dreamdiaryscratch.LinedEditText
+            android:id="@+id/diary_add_content_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/diary_add_radiogroup"
+            android:layout_toEndOf="@id/diary_add_content"
+            android:gravity="start"
+            android:layout_marginTop="45dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/night_blue"
+            android:background="@null"/>
+
+
+    </RelativeLayout>
 
     <Button
-        android:id="@+id/addDream"
+        android:id="@+id/diary_add_addbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Add dream"
+        android:text="@string/add_dream_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+        app:layout_constraintTop_toBottomOf="@+id/diary_add_layout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

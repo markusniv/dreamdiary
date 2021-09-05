@@ -5,9 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
 import com.example.dreamdiaryscratch.R
+import com.example.dreamdiaryscratch.dataclasses.Addition
+import com.example.dreamdiaryscratch.dataclasses.AdditionSingleton
+import com.example.dreamdiaryscratch.dataclasses.Dream
+import com.example.dreamdiaryscratch.dataclasses.DreamType
+import org.w3c.dom.Text
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,6 +47,25 @@ class AddDreamFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val dreamTitle : EditText = requireView().findViewById(R.id.diary_add_title_edit)
+        val dreamMood : RadioGroup = requireView().findViewById(R.id.diary_add_radiogroup)
+        val dreamContent : EditText = requireView().findViewById(R.id.diary_add_content_edit)
+
+        val dreamAddButton : Button = requireView().findViewById(R.id.diary_add_addbutton)
+
+        dreamAddButton.setOnClickListener {
+            val dreamTitleString = dreamTitle.text.toString()
+            val dreamContentString = dreamContent.text.toString()
+            val dreamMoodIcon : Int = when(dreamMood.checkedRadioButtonId) {
+                R.id.diary_add_mood_happy -> R.drawable.ic_mood_happy
+                R.id.diary_add_mood_sad -> R.drawable.ic_mood_sad
+                else -> R.drawable.ic_mood_veryhappy
+            }
+
+            val newDream = Dream(DreamType.REGULAR, dreamTitleString, dreamContentString)
+            val newAddition = Addition(newDream, dreamMoodIcon)
+            AdditionSingleton.additionList.add(newAddition)
+        }
 
     }
 

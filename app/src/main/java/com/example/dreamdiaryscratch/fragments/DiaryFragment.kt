@@ -51,7 +51,7 @@ class DiaryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        createDummyEntries(50)
+        //createDummyEntries(50)
 
         val recyclerView : RecyclerView = requireView().findViewById(R.id.rv_diary)
         recyclerView.adapter = RecyclerViewAdapter(AdditionSingleton.additionList)
@@ -84,8 +84,8 @@ class DiaryFragment : Fragment() {
             val j = (1..3).random()
             val icon = when (j) {
                 1 -> R.drawable.ic_mood_sad
-                2 -> R.drawable.ic_mood_happy
-                else -> R.drawable.ic_mood_veryhappy
+                2 -> R.drawable.ic_mood_veryhappy
+                else -> R.drawable.ic_mood_happy
             }
             val dreamType = when (j) {
                 1 -> DreamType.NIGHTMARE
