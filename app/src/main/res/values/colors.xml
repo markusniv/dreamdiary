@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="light_blue">#99A3FD</color>
     <color name="night_blue">#FF5969F8</color>
     <color name="dark_night_Blue">#2E3FD1</color>
     <color name="darker_night_blue">#1625AA</color>

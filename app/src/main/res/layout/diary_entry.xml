@@ -27,13 +27,13 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/dream_type"
+            android:id="@+id/dream_content_short"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dream_name"
             android:layout_toEndOf="@+id/dream_icon"
             android:textColor="@color/night_blue"
-            android:text="Dream type" />
+            android:text="Dream content" />
 
     </RelativeLayout>
 

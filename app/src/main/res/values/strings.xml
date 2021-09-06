@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">DreamDiaryScratch</string>
-    <string name="add_dream_name">Dream title: </string>
+    <string name="add_dream_name">Dream title</string>
     <string name="add_dream_mood">Mood: </string>
-    <string name="add_dream_content">Entry: </string>
+    <string name="add_dream_content">Entry</string>
     <string name="add_dream_button">Add dream</string>
 </resources>

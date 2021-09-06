@@ -1,13 +1,20 @@
 package com.example.dreamdiaryscratch.fragments
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
+import com.example.dreamdiaryscratch.MainActivity
 import com.example.dreamdiaryscratch.R
 import com.example.dreamdiaryscratch.dataclasses.*
+import kotlinx.android.synthetic.main.fragment_add_dream.*
+import kotlinx.android.synthetic.main.fragment_add_dream.view.*
 import org.w3c.dom.Text
 
 // TODO: Rename parameter arguments, choose names that match
@@ -28,35 +35,48 @@ class AddDreamFragment : Fragment() {
         }
     }
 
+    private lateinit var mEntryViewModel: EntryViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_dream, container, false)
+        val view =  inflater.inflate(R.layout.fragment_add_dream, container, false)
+
+        mEntryViewModel = ViewModelProvider(this).get(EntryViewModel::class.java)
+
+        view.diary_add_addbutton.setOnClickListener {
+            insertEntryToDatabase()
+
+            (context as MainActivity).replaceFragment(DiaryFragment())
+        }
+
+        return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun insertEntryToDatabase() {
+        val dreamTitle = diary_add_title_edit.text.toString()
+        val dreamMood : Int = when(diary_add_radiogroup.checkedRadioButtonId) {
+            R.id.diary_add_mood_happy -> R.drawable.ic_mood_happy
+            R.id.diary_add_mood_sad -> R.drawable.ic_mood_sad
+            else -> R.drawable.ic_mood_veryhappy
+        }
+        val dreamContent = diary_add_content_edit.text.toString()
 
-        val dreamTitle : EditText = requireView().findViewById(R.id.diary_add_title_edit)
-        val dreamMood : RadioGroup = requireView().findViewById(R.id.diary_add_radiogroup)
-        val dreamContent : EditText = requireView().findViewById(R.id.diary_add_content_edit)
-
-        val dreamAddButton : Button = requireView().findViewById(R.id.diary_add_addbutton)
-
-        dreamAddButton.setOnClickListener {
-            val dreamTitleString = dreamTitle.text.toString()
-            val dreamContentString = dreamContent.text.toString()
-            val dreamMoodIcon : Int = when(dreamMood.checkedRadioButtonId) {
-                R.id.diary_add_mood_happy -> R.drawable.ic_mood_happy
-                R.id.diary_add_mood_sad -> R.drawable.ic_mood_sad
-                else -> R.drawable.ic_mood_veryhappy
-            }
-
-            val newEntry = Entry(1,DreamType.REGULAR,dreamTitleString,dreamContentString,dreamMoodIcon)
-            EntrySingleton.entryList.add(newEntry)
+        if (inputCheck(dreamTitle, dreamContent)) {
+            val entry = Entry(0, dreamTitle, dreamContent, dreamMood)
+            mEntryViewModel.addEntry(entry)
+            Toast.makeText(requireContext(), "Succesfully added!", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(requireContext(), "Please fill all fields!", Toast.LENGTH_LONG).show()
         }
 
     }
+
+    private fun inputCheck(dreamTitle : String,
+                           dreamContent : String) : Boolean {
+        return !(TextUtils.isEmpty(dreamTitle) && TextUtils.isEmpty(dreamContent))
+    }
+
 }
