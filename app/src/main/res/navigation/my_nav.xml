@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/addDreamFragment"
         android:name="com.example.dreamdiaryscratch.fragments.AddDreamFragment"
-        android:label="AddDream"
+        android:label="Add"
         tools:layout="@layout/fragment_add_dream" >
         <action
             android:id="@+id/action_addDreamFragment_to_diaryFragment"
@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/updateFragment"
         android:name="com.example.dreamdiaryscratch.fragments.UpdateFragment"
-        android:label="UpdateDream"
+        android:label="Update"
         tools:layout="@layout/fragment_update" >
         <action
             android:id="@+id/action_updateFragment_to_diaryFragment"
