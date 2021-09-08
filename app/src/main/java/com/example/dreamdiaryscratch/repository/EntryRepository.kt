@@ -14,4 +14,12 @@ class EntryRepository(private val entryDao: EntryDao) {
     suspend fun updateEntry(entry: Entry) {
         entryDao.updateEntry(entry)
     }
+
+    suspend fun deleteEntry(entry: Entry) {
+        entryDao.deleteEntry(entry)
+    }
+
+    suspend fun deleteAllEntries() {
+        entryDao.deleteAllEntries()
+    }
 }

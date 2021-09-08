@@ -1,10 +1,10 @@
 package com.example.dreamdiaryscratch.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -37,27 +37,34 @@ class DiaryFragment : Fragment() {
         mEntryViewModel = ViewModelProvider(this).get(EntryViewModel::class.java)
         mEntryViewModel.readAllData.observe(viewLifecycleOwner, Observer { entry ->
             adapter.setData(entry)
+            if (entry.isNotEmpty()) setHasOptionsMenu(true)
         })
-
         return view
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete_menu, menu)
+    }
 
-/*    private fun createDummyEntries(size : Int) {
-        for (i in 0..size) {
-            val j = (1..3).random()
-            val icon = when (j) {
-                1 -> R.drawable.ic_mood_sad
-                2 -> R.drawable.ic_mood_veryhappy
-                else -> R.drawable.ic_mood_happy
-            }
-            val dreamType = when (j) {
-                1 -> DreamType.NIGHTMARE
-                2 -> DreamType.LUCID_DREAM
-                else -> DreamType.REGULAR
-            }
-            val entry = Entry(i, dreamType,"dream_name$i","dream content",icon)
-            EntrySingleton.entryList.add(entry)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.delete_menu) {
+            deleteAllUsers()
         }
-    }*/
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun deleteAllUsers() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yes") {_, _ ->
+            mEntryViewModel.deleteAllEntries()
+            Toast.makeText(requireContext(),
+                "Succesfully emptied the diary.",
+                Toast.LENGTH_LONG).show()
+            setHasOptionsMenu(false)
+        }
+        builder.setNegativeButton("No") {_, _ -> }
+        builder.setTitle("Really delete all diary entries?")
+        builder.setMessage("Are you sure you want to empty your entire diary? This action is permanent!")
+        builder.create().show()
+    }
 }

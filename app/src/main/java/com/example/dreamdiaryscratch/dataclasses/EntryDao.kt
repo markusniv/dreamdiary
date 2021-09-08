@@ -13,6 +13,12 @@ interface EntryDao {
     @Update
     suspend fun updateEntry(entry: Entry)
 
+    @Delete
+    suspend fun deleteEntry(entry: Entry)
+
+    @Query("DELETE FROM entry_table")
+    suspend fun deleteAllEntries()
+
     @Query("SELECT * FROM entry_table ORDER BY id ASC")
     fun readAllData(): LiveData<List<Entry>>
 }

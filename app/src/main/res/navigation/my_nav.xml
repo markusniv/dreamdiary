@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/diaryFragment"
         android:name="com.example.dreamdiaryscratch.fragments.DiaryFragment"
-        android:label="Diary"
+        android:label="Dream Diary"
         tools:layout="@layout/fragment_diary" >
         <action
             android:id="@+id/action_diaryFragment_to_addDreamFragment"

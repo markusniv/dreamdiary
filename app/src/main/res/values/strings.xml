@@ -5,4 +5,5 @@
     <string name="add_dream_content">Entry</string>
     <string name="add_dream_button">Add dream</string>
     <string name="edit_dream_button">Update dream</string>
+    <string name="delete">Delete</string>
 </resources>

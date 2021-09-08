@@ -1,10 +1,9 @@
 package com.example.dreamdiaryscratch.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -68,6 +67,9 @@ class UpdateFragment : Fragment() {
             checked.background.setTint(resources.getColor(R.color.dark_night_Blue))
         }
 
+        // Add menu
+        setHasOptionsMenu(true)
+
         return view
 
     }
@@ -87,5 +89,31 @@ class UpdateFragment : Fragment() {
             Toast.makeText(requireContext(), "Entry updated!", Toast.LENGTH_LONG).show()
             findNavController().navigate(R.id.action_updateFragment_to_diaryFragment)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.delete_menu) {
+            deleteEntry()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun deleteEntry() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yes") {_, _ ->
+            mEntryViewModel.deleteEntry(args.currentEntry)
+            Toast.makeText(requireContext(),
+                "Succesfully deleted: ${args.currentEntry.dreamTitle}",
+                Toast.LENGTH_LONG).show()
+            findNavController().navigate(R.id.action_updateFragment_to_diaryFragment)
+        }
+        builder.setNegativeButton("No") {_, _ -> }
+        builder.setTitle("Delete ${args.currentEntry.dreamTitle}?")
+        builder.setMessage("Are you sure you want to delete ${args.currentEntry.dreamTitle}?")
+        builder.create().show()
     }
 }

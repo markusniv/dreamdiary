@@ -32,4 +32,16 @@ class EntryViewModel(application: Application): AndroidViewModel(application) {
             repository.updateEntry(entry)
         }
     }
+
+    fun deleteEntry(entry: Entry) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteEntry(entry)
+        }
+    }
+
+    fun deleteAllEntries() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAllEntries()
+        }
+    }
 }
