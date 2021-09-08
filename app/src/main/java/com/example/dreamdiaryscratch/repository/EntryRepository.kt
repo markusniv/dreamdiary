@@ -10,4 +10,8 @@ class EntryRepository(private val entryDao: EntryDao) {
     suspend fun addEntry(entry: Entry) {
         entryDao.addEntry(entry)
     }
+
+    suspend fun updateEntry(entry: Entry) {
+        entryDao.updateEntry(entry)
+    }
 }

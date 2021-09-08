@@ -46,20 +46,20 @@
 
             <RadioButton
                 android:id="@+id/diary_edit_mood_veryhappy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:button="@null"
                 android:background="@drawable/ic_mood_veryhappy"/>
             <RadioButton
                 android:id="@+id/diary_edit_mood_happy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:button="@null"
                 android:background="@drawable/ic_mood_happy"/>
             <RadioButton
                 android:id="@+id/diary_edit_mood_sad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:button="@null"
                 android:background="@drawable/ic_mood_sad"/>
         </RadioGroup>
@@ -82,7 +82,7 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/diary_edit_addbutton"
+        android:id="@+id/diary_edit_updatebutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit_dream_button"

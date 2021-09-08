@@ -5,8 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.ListFragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dreamdiaryscratch.fragments.DiaryFragment
+import com.example.dreamdiaryscratch.fragments.DiaryFragmentDirections
 import com.example.dreamdiaryscratch.model.Entry
+import kotlinx.android.synthetic.main.diary_entry.view.*
 
 class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>() {
 
@@ -37,6 +42,10 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.RecyclerView
         for (i in 0..len) words += "${dreamContentInList[i]} "
         words += dots
         holder.dreamContent.text = words
+        holder.itemView.entryLayout.setOnClickListener {
+            val action = DiaryFragmentDirections.actionDiaryFragmentToUpdateFragment(currentItem)
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     fun setData(entry: List<Entry>) {

@@ -1,7 +1,9 @@
 package com.example.dreamdiaryscratch.fragments
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,28 +13,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.dreamdiaryscratch.MainActivity
 import com.example.dreamdiaryscratch.R
+import com.example.dreamdiaryscratch.functions.inputCheck
+import com.example.dreamdiaryscratch.functions.resetMoods
 import com.example.dreamdiaryscratch.model.Entry
 import com.example.dreamdiaryscratch.viewmodel.EntryViewModel
 import kotlinx.android.synthetic.main.fragment_add_dream.*
 import kotlinx.android.synthetic.main.fragment_add_dream.view.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class AddDreamFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     private lateinit var mEntryViewModel: EntryViewModel
 
@@ -44,11 +33,22 @@ class AddDreamFragment : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_add_dream, container, false)
 
         mEntryViewModel = ViewModelProvider(this).get(EntryViewModel::class.java)
+        val res = resources
 
         view.diary_add_addbutton.setOnClickListener {
+            resetMoods(view.diary_add_mood_happy, res)
+            resetMoods(view.diary_add_mood_sad, res)
+            resetMoods(view.diary_add_mood_veryhappy, res)
             insertEntryToDatabase()
-
             findNavController().navigate(R.id.action_addDreamFragment_to_diaryFragment)
+        }
+        view.diary_add_radiogroup.setOnCheckedChangeListener { radioGroup, i ->
+            resetMoods(view.diary_add_mood_happy, res)
+            resetMoods(view.diary_add_mood_sad, res)
+            resetMoods(view.diary_add_mood_veryhappy, res)
+
+            val checked = view.findViewById<RadioButton>(i)
+            checked.background.setTint(resources.getColor(R.color.dark_night_Blue))
         }
 
         return view
@@ -71,11 +71,6 @@ class AddDreamFragment : Fragment() {
             Toast.makeText(requireContext(), "Please fill all fields!", Toast.LENGTH_LONG).show()
         }
 
-    }
-
-    private fun inputCheck(dreamTitle : String,
-                           dreamContent : String) : Boolean {
-        return !(TextUtils.isEmpty(dreamTitle) && TextUtils.isEmpty(dreamContent))
     }
 
 }

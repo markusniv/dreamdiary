@@ -26,4 +26,10 @@ class EntryViewModel(application: Application): AndroidViewModel(application) {
             repository.addEntry(entry)
         }
     }
+
+    fun updateEntry(entry: Entry) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateEntry(entry)
+        }
+    }
 }

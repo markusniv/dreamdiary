@@ -4,12 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/drawable/ic_add.xml" value="0.3828125" />
+        <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/drawable/ic_baseline_check_box_outline_blank_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/drawable/ic_checked_border.xml" value="0.3828125" />
         <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/drawable/ic_mood_happy.xml" value="0.3828125" />
+        <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/drawable/ic_mood_happy_checked.xml" value="0.12314814814814815" />
         <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/drawable/ic_mood_sad.xml" value="0.3828125" />
+        <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/drawable/ic_mood_sad_checked.xml" value="0.12314814814814815" />
         <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/drawable/ic_mood_veryhappy.xml" value="0.3828125" />
+        <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/drawable/ic_mood_veryhappy_checked.xml" value="0.12314814814814815" />
         <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/layout/diary_entry.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/layout/fragment_add_dream.xml" value="0.1" />
+        <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/layout/fragment_add_dream.xml" value="0.33" />
         <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/layout/fragment_diary.xml" value="0.2" />
         <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/layout/fragment_dream.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/marku/AndroidStudioProjects/DreamDiaryScratch/app/src/main/res/layout/fragment_settings.xml" value="0.36666666666666664" />

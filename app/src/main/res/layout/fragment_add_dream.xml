@@ -44,24 +44,25 @@
             android:layout_below="@id/diary_add_mood"
             android:orientation="horizontal"
             android:paddingTop="30dp"
-            android:layout_centerHorizontal="true">
+            android:layout_centerHorizontal="true"
+            android:checkedButton="@id/diary_add_mood_veryhappy">
 
             <RadioButton
                 android:id="@+id/diary_add_mood_veryhappy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:button="@null"
                 android:background="@drawable/ic_mood_veryhappy"/>
             <RadioButton
                 android:id="@+id/diary_add_mood_happy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:button="@null"
                 android:background="@drawable/ic_mood_happy"/>
             <RadioButton
                 android:id="@+id/diary_add_mood_sad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:button="@null"
                 android:background="@drawable/ic_mood_sad"/>
         </RadioGroup>
