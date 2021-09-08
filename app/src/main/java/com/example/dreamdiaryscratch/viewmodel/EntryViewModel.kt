@@ -1,9 +1,12 @@
-package com.example.dreamdiaryscratch.dataclasses
+package com.example.dreamdiaryscratch.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.dreamdiaryscratch.dataclasses.EntryDatabase
+import com.example.dreamdiaryscratch.repository.EntryRepository
+import com.example.dreamdiaryscratch.model.Entry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

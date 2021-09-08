@@ -1,4 +1,4 @@
-package com.example.dreamdiaryscratch.dataclasses
+package com.example.dreamdiaryscratch.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

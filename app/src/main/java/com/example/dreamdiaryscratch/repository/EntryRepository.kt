@@ -1,6 +1,8 @@
-package com.example.dreamdiaryscratch.dataclasses
+package com.example.dreamdiaryscratch.repository
 
 import androidx.lifecycle.LiveData
+import com.example.dreamdiaryscratch.dataclasses.EntryDao
+import com.example.dreamdiaryscratch.model.Entry
 
 class EntryRepository(private val entryDao: EntryDao) {
     val readAllData: LiveData<List<Entry>> = entryDao.readAllData()

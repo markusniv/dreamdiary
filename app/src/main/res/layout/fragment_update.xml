@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.UpdateFragment">
+
+    <RelativeLayout
+        android:id="@+id/diary_edit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="100dp">
+
+        <EditText
+            android:id="@+id/diary_edit_title_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/night_blue"
+            android:hint="@string/add_dream_name"
+            android:textColorHint="@color/light_blue"
+            android:textAlignment="center"
+            android:backgroundTint="@color/night_blue"/>
+        <TextView
+            android:id="@+id/diary_edit_mood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/diary_edit_title_edit"
+            android:paddingTop="50dp"
+            android:text="@string/add_dream_mood"
+            android:textStyle="bold"
+            android:textColor="@color/dark_night_Blue"
+            android:textSize="18sp"
+            android:layout_centerHorizontal="true"/>
+        <RadioGroup
+            android:id="@+id/diary_edit_radiogroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/diary_edit_mood"
+            android:orientation="horizontal"
+            android:paddingTop="30dp"
+            android:layout_centerHorizontal="true">
+
+            <RadioButton
+                android:id="@+id/diary_edit_mood_veryhappy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:background="@drawable/ic_mood_veryhappy"/>
+            <RadioButton
+                android:id="@+id/diary_edit_mood_happy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:background="@drawable/ic_mood_happy"/>
+            <RadioButton
+                android:id="@+id/diary_edit_mood_sad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:background="@drawable/ic_mood_sad"/>
+        </RadioGroup>
+
+        <com.example.dreamdiaryscratch.LinedEditText
+            android:id="@+id/diary_edit_content_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/diary_edit_radiogroup"
+            android:layout_marginTop="45dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="@string/add_dream_content"
+            android:textColorHint="@color/light_blue"
+            android:textAlignment="center"
+            android:textColor="@color/night_blue"
+            tools:ignore="RtlCompat" />
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/diary_edit_addbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_dream_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diary_edit_layout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

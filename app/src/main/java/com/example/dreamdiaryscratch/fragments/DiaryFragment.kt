@@ -5,18 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListAdapter
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.dreamdiaryscratch.DreamDiary
 import com.example.dreamdiaryscratch.R
 import com.example.dreamdiaryscratch.RecyclerViewAdapter
-import com.example.dreamdiaryscratch.dataclasses.*
+import com.example.dreamdiaryscratch.viewmodel.EntryViewModel
 import kotlinx.android.synthetic.main.fragment_diary.view.*
-import kotlin.random.Random
 
 class DiaryFragment : Fragment() {
 
@@ -28,6 +24,10 @@ class DiaryFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_diary, container, false)
+
+        view.floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_diaryFragment_to_addDreamFragment)
+        }
 
         val adapter = RecyclerViewAdapter()
         val recyclerView = view.rv_diary

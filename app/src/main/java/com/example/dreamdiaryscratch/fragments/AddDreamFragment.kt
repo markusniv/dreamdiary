@@ -7,15 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.dreamdiaryscratch.MainActivity
 import com.example.dreamdiaryscratch.R
-import com.example.dreamdiaryscratch.dataclasses.*
+import com.example.dreamdiaryscratch.model.Entry
+import com.example.dreamdiaryscratch.viewmodel.EntryViewModel
 import kotlinx.android.synthetic.main.fragment_add_dream.*
 import kotlinx.android.synthetic.main.fragment_add_dream.view.*
-import org.w3c.dom.Text
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,7 +48,7 @@ class AddDreamFragment : Fragment() {
         view.diary_add_addbutton.setOnClickListener {
             insertEntryToDatabase()
 
-            (context as MainActivity).replaceFragment(DiaryFragment())
+            findNavController().navigate(R.id.action_addDreamFragment_to_diaryFragment)
         }
 
         return view

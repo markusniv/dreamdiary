@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/diaryFragment">
+
+    <fragment
+        android:id="@+id/diaryFragment"
+        android:name="com.example.dreamdiaryscratch.fragments.DiaryFragment"
+        android:label="fragment_diary"
+        tools:layout="@layout/fragment_diary" >
+        <action
+            android:id="@+id/action_diaryFragment_to_addDreamFragment"
+            app:destination="@id/addDreamFragment" />
+        <action
+            android:id="@+id/action_diaryFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addDreamFragment"
+        android:name="com.example.dreamdiaryscratch.fragments.AddDreamFragment"
+        android:label="fragment_add_dream"
+        tools:layout="@layout/fragment_add_dream" >
+        <action
+            android:id="@+id/action_addDreamFragment_to_diaryFragment"
+            app:destination="@id/diaryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.dreamdiaryscratch.fragments.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_diaryFragment"
+            app:destination="@id/diaryFragment" />
+    </fragment>
+</navigation>
