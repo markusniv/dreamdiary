@@ -8,8 +8,7 @@ import android.util.AttributeSet;
 
 /// Used for adding underlines to EditTexts
 ///
-/// Courtesy of old Android Developer sample resources,
-/// not available anymore but found on
+/// Courtesy of old Android Developer sample resources, not available anymore but found on
 /// https://stackoverflow.com/questions/4114859/android-edittext-underline
 
 public class LinedEditText extends androidx.appcompat.widget.AppCompatEditText {
@@ -22,6 +21,7 @@ public class LinedEditText extends androidx.appcompat.widget.AppCompatEditText {
         mRect = new Rect();
         mPaint = new Paint();
         mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeWidth(4);
         mPaint.setColor(0x800000FF);
     }
 
@@ -31,7 +31,7 @@ public class LinedEditText extends androidx.appcompat.widget.AppCompatEditText {
         Rect r = mRect;
         for (int i = 0; i < count; i++) {
             int baseline = getLineBounds(i, r);
-            canvas.drawLine(r.left, baseline + 1, r.right, baseline + 1, mPaint);
+            canvas.drawLine(r.left, baseline + 10, r.right, baseline + 10, mPaint);
         }
         super.onDraw(canvas);
     }

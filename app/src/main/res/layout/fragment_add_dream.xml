@@ -79,6 +79,7 @@
             android:textColorHint="@color/light_blue"
             android:textAlignment="center"
             android:textColor="@color/night_blue"
+
             tools:ignore="RtlCompat" />
 
 
