@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Dream Diary</string>
     <string name="add_dream_name">Dream title</string>
+    <string name="dream_date">Date</string>
     <string name="add_dream_mood">Mood: </string>
     <string name="add_dream_content">Entry</string>
     <string name="add_dream_button">Add dream</string>
     <string name="edit_dream_button">Update dream</string>
     <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 </resources>

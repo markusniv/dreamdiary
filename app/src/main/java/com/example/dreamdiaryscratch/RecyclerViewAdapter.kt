@@ -43,7 +43,7 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.RecyclerView
         words += dots
         holder.dreamContent.text = words
         holder.itemView.entryLayout.setOnClickListener {
-            val action = DiaryFragmentDirections.actionDiaryFragmentToUpdateFragment(currentItem)
+            val action = DiaryFragmentDirections.actionDiaryFragmentToEntryFragment(currentItem)
             holder.itemView.findNavController().navigate(action)
         }
     }

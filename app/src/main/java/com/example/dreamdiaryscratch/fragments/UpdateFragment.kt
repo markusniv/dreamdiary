@@ -14,12 +14,8 @@ import com.example.dreamdiaryscratch.functions.inputCheck
 import com.example.dreamdiaryscratch.functions.resetMoods
 import com.example.dreamdiaryscratch.model.Entry
 import com.example.dreamdiaryscratch.viewmodel.EntryViewModel
-import kotlinx.android.synthetic.main.fragment_add_dream.*
-import kotlinx.android.synthetic.main.fragment_add_dream.diary_add_title_edit
-import kotlinx.android.synthetic.main.fragment_add_dream.view.*
 import kotlinx.android.synthetic.main.fragment_update.*
 import kotlinx.android.synthetic.main.fragment_update.view.*
-import java.security.KeyStore
 
 class UpdateFragment : Fragment() {
 
@@ -30,7 +26,6 @@ class UpdateFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_update, container, false)
 
         mEntryViewModel = ViewModelProvider(this).get(EntryViewModel::class.java)
@@ -87,7 +82,9 @@ class UpdateFragment : Fragment() {
             val updatedEntry = Entry(args.currentEntry.id, dreamTitle, dreamContent, dreamMood)
             mEntryViewModel.updateEntry(updatedEntry)
             Toast.makeText(requireContext(), "Entry updated!", Toast.LENGTH_LONG).show()
-            findNavController().navigate(R.id.action_updateFragment_to_diaryFragment)
+
+            val action = UpdateFragmentDirections.actionUpdateFragmentToEntryFragment(updatedEntry)
+            findNavController().navigate(action)
         }
     }
 

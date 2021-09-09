@@ -14,8 +14,8 @@
             android:id="@+id/action_diaryFragment_to_addDreamFragment"
             app:destination="@id/addDreamFragment" />
         <action
-            android:id="@+id/action_diaryFragment_to_updateFragment"
-            app:destination="@id/updateFragment" />
+            android:id="@+id/action_diaryFragment_to_entryFragment"
+            app:destination="@id/entryFragment" />
     </fragment>
     <fragment
         android:id="@+id/addDreamFragment"
@@ -31,8 +31,26 @@
         android:name="com.example.dreamdiaryscratch.fragments.UpdateFragment"
         android:label="Update"
         tools:layout="@layout/fragment_update" >
+        <argument
+            android:name="currentEntry"
+            app:argType="com.example.dreamdiaryscratch.model.Entry" />
+        <action
+            android:id="@+id/action_updateFragment_to_entryFragment"
+            app:destination="@id/entryFragment" />
         <action
             android:id="@+id/action_updateFragment_to_diaryFragment"
+            app:destination="@id/diaryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/entryFragment"
+        android:name="com.example.dreamdiaryscratch.fragments.EntryFragment"
+        android:label="Entry"
+        tools:layout="@layout/fragment_entry" >
+        <action
+            android:id="@+id/action_entryFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_entryFragment_to_diaryFragment"
             app:destination="@id/diaryFragment" />
         <argument
             android:name="currentEntry"
