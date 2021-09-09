@@ -37,34 +37,19 @@ class DiaryFragment : Fragment() {
         mEntryViewModel = ViewModelProvider(this).get(EntryViewModel::class.java)
         mEntryViewModel.readAllData.observe(viewLifecycleOwner, Observer { entry ->
             adapter.setData(entry)
-            if (entry.isNotEmpty()) setHasOptionsMenu(true)
         })
+        setHasOptionsMenu(true)
         return view
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.delete_menu, menu)
+        inflater.inflate(R.menu.settings_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.delete_menu) {
-            deleteAllUsers()
+        if (item.itemId == R.id.settings_menu) {
+            findNavController().navigate(R.id.action_diaryFragment_to_settingsFragment)
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun deleteAllUsers() {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setPositiveButton("Yes") {_, _ ->
-            mEntryViewModel.deleteAllEntries()
-            Toast.makeText(requireContext(),
-                "Succesfully emptied the diary.",
-                Toast.LENGTH_LONG).show()
-            setHasOptionsMenu(false)
-        }
-        builder.setNegativeButton("No") {_, _ -> }
-        builder.setTitle("Really delete all diary entries?")
-        builder.setMessage("Are you sure you want to empty your entire diary? This action is permanent!")
-        builder.create().show()
     }
 }

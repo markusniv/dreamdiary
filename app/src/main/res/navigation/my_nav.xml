@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_diaryFragment_to_entryFragment"
             app:destination="@id/entryFragment" />
+        <action
+            android:id="@+id/action_diaryFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addDreamFragment"
@@ -55,5 +58,14 @@
         <argument
             android:name="currentEntry"
             app:argType="com.example.dreamdiaryscratch.model.Entry" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.dreamdiaryscratch.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_diaryFragment"
+            app:destination="@id/diaryFragment" />
     </fragment>
 </navigation>

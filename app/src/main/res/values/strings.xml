@@ -8,4 +8,7 @@
     <string name="edit_dream_button">Update dream</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="empty_all">Empty diary</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="settings">Settings</string>
 </resources>

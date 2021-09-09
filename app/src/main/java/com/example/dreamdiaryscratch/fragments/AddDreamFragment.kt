@@ -35,6 +35,10 @@ class AddDreamFragment : Fragment() {
         mEntryViewModel = ViewModelProvider(this).get(EntryViewModel::class.java)
         val res = resources
 
+        val defaultMood = view.diary_add_mood_happy
+        defaultMood.isChecked = true
+        defaultMood.background.setTint(resources.getColor(R.color.darker_night_blue))
+
         view.diary_add_addbutton.setOnClickListener {
             resetMoods(view.diary_add_mood_happy, res)
             resetMoods(view.diary_add_mood_sad, res)
@@ -48,7 +52,7 @@ class AddDreamFragment : Fragment() {
             resetMoods(view.diary_add_mood_veryhappy, res)
 
             val checked = view.findViewById<RadioButton>(i)
-            checked.background.setTint(resources.getColor(R.color.dark_night_Blue))
+            checked.background.setTint(resources.getColor(R.color.darker_night_blue))
         }
 
         return view

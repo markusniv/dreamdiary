@@ -35,7 +35,7 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.RecyclerView
         var words = ""
         var len = 6
         var dots = "..."
-        if (dreamContentInList.size < len) {
+        if (len !in dreamContentInList.indices) {
             len = dreamContentInList.size - 1
             dots = ""
         }

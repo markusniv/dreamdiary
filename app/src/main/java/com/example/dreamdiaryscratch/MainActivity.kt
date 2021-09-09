@@ -3,18 +3,11 @@ package com.example.dreamdiaryscratch
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.dreamdiaryscratch.fragments.AddDreamFragment
-import com.example.dreamdiaryscratch.fragments.DiaryFragment
-import com.example.dreamdiaryscratch.fragments.SettingsFragment
 import com.example.dreamdiaryscratch.fragments.UpdateFragment
 import com.example.dreamdiaryscratch.functions.resetMoods
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarItemView
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_add_dream.view.*
 import kotlinx.android.synthetic.main.fragment_update.view.*
 
