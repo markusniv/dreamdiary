@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat.getColor
 import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.lifecycle.Observer
@@ -19,6 +20,10 @@ import kotlinx.android.synthetic.main.fragment_settings.view.*
 class SettingsFragment : Fragment() {
 
     private lateinit var mEntryViewModel: EntryViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +47,17 @@ class SettingsFragment : Fragment() {
             }
         })
 
-
+        /*view.dark_mode_switch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                requireActivity().let {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                }
+            } else {
+                requireActivity().let {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
+            }
+        }*/
 
         return view
     }

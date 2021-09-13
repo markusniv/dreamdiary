@@ -19,11 +19,12 @@
             android:id="@+id/diary_add_title_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/night_blue"
+            android:backgroundTint="@color/night_blue"
             android:hint="@string/add_dream_name"
-            android:textColorHint="@color/light_blue"
             android:textAlignment="center"
-            android:backgroundTint="@color/night_blue"/>
+            android:singleLine="true"
+            android:textColor="@color/night_blue"
+            android:textColorHint="@color/light_blue" />
         <TextView
             android:id="@+id/diary_add_mood"
             android:layout_width="wrap_content"
